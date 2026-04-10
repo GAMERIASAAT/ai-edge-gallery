@@ -122,7 +122,7 @@ class MetasploitApiClient {
       if (ssl) {
         val https = url.openConnection() as HttpsURLConnection
         https.sslSocketFactory = trustAllSslSocketFactory()
-        https.hostnameVerifier = { _, _ -> true }
+        https.hostnameVerifier = javax.net.ssl.HostnameVerifier { _, _ -> true }
         https
       } else {
         url.openConnection() as HttpURLConnection

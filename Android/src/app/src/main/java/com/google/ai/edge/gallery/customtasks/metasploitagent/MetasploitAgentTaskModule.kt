@@ -26,6 +26,7 @@ import com.google.ai.edge.gallery.data.Category
 import com.google.ai.edge.gallery.data.Model
 import com.google.ai.edge.gallery.data.Task
 import com.google.ai.edge.gallery.ui.llmchat.LlmChatModelHelper
+import com.google.ai.edge.litertlm.Contents
 import com.google.ai.edge.litertlm.tool
 import dagger.Module
 import dagger.Provides
@@ -104,7 +105,7 @@ class MetasploitAgentTask @Inject constructor() : CustomTask {
       supportImage = false,
       supportAudio = false,
       onDone = onDone,
-      systemInstruction = task.defaultSystemPrompt,
+      systemInstruction = Contents.of(task.defaultSystemPrompt),
       tools = listOf(tool(metasploitTools)),
       enableConversationConstrainedDecoding = true,
     )
